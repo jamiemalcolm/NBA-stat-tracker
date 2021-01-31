@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>Welcome To Your NBA Stat Tracker</p>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import config from "@/config.js";
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      allTeams: [],
+    };
+  },
+  mounted() {
+    const api_key_1 = config.api_key_1;
+
+    fetch(
+      `https://api.sportsdata.io/v3/nba/scores/json/AllTeams?key=${api_key_1}`
+    )
+      .then((res) => res.json())
+      .then((data) => (this.allTeams = data));
+  },
+};
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
