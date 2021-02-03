@@ -1,15 +1,16 @@
 <template>
   <div id="app">
     <p>Welcome To Your NBA Stat Tracker</p>
-    <team-logo :allTeams="allTeams"></team-logo>
+    <team-logos :allTeams="allTeams"></team-logos>
   </div>
 </template>
 
 <script>
+import { eventBus } from "@/main.js";
 import config from "@/config.js";
-import TeamLogo from "@/components/TeamLogo.vue";
+import TeamLogos from "@/components/TeamLogos.vue";
 import TeamDetails from "@/components/TeamDetails.vue";
-import eventBus from "@/main.js";
+
 export default {
   data() {
     return {
@@ -29,16 +30,11 @@ export default {
     });
   },
   components: {
-    "team-logo": TeamLogo,
+    "team-logos": TeamLogos,
     "team-details": TeamDetails,
   },
 };
 </script>
 
 <style lang="css" scoped>
-#app {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
 </style>
