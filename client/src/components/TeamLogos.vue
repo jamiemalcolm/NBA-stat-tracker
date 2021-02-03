@@ -20,11 +20,6 @@ export default {
   components: {
     "team-logo": TeamLogo,
   },
-  methods: {
-    showDetails: function () {
-      eventBus.$emit("selected-team", this.team);
-    },
-  },
 };
 </script>
 
