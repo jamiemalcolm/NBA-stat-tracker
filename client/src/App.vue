@@ -2,6 +2,7 @@
   <div id="app">
     <p>Welcome To Your NBA Stat Tracker</p>
     <team-logos :allTeams="allTeams"></team-logos>
+    <team-details :team="selectedTeam"></team-details>
   </div>
 </template>
 
