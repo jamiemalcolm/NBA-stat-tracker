@@ -11,14 +11,15 @@
                 onLeft: leftIndex >= 0,
                 onRight: rightIndex >= 0,
               }"
-              :src="team.WikipediaLogoUrl"     
+              :src="team.WikipediaLogoUrl"
+              style="width: 75px; justify-content: center"
             />
           </template>
         </slide>
       </carousel-3d>
 
-      <!-- <ul v-for="(team, index) in allTeams" :team="team" :key="index">
-        <team-logo :team="team"></team-logo> -->
+      <ul v-for="(team, index) in allTeams" :team="team" :key="index">
+        <team-logo :team="team"></team-logo>
       </ul>
     </div>
   </div>
@@ -27,9 +28,13 @@
 <script>
 import { eventBus } from "@/main.js";
 import TeamLogo from "@/components/TeamLogo.vue";
+import config from "@/config.js";
 export default {
   data() {
-    return {};
+    return {
+      playerStats: [],
+      selectedTeam: null,
+    };
   },
   name: "team-logos",
   props: ["allTeams"],
@@ -38,8 +43,12 @@ export default {
   },
   methods: {
     showDetails: function () {
+      this.selectedTeam = this.team;
       eventBus.$emit("selected-team", this.team);
     },
+  },
+  mounted() {
+    const api_key_1 = config.api_key_1;
   },
 };
 </script>

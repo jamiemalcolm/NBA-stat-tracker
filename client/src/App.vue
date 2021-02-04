@@ -17,8 +17,10 @@ export default {
     return {
       allTeams: [],
       selectedTeam: {},
+      playerStats: {},
     };
   },
+  methods: {},
   mounted() {
     const api_key_1 = config.api_key_1;
 
@@ -28,6 +30,15 @@ export default {
 
     eventBus.$on("selected-team", (team) => {
       this.selectedTeam = team;
+    });
+
+    eventBus.$on("players-request", () => {
+      let teamKey = this.selectedTeam.Key;
+      fetch(
+        `https://api.sportsdata.io/v3/nba/stats/json/PlayerSeasonStatsByTeam/2020/${teamKey}?key=${api_key_1}`
+      )
+        .then((res) => res.json())
+        .then((data) => (this.playerStats = data));
     });
   },
   components: {
