@@ -1,10 +1,12 @@
 <template>
-  <img
-    :src="team.WikipediaLogoUrl"
-    :alt="team.Key"
-    :value="team"
-    @click="showDetails"
-  />
+  <div>
+    <img
+      :src="team.WikipediaLogoUrl"
+      :alt="team.Key"
+      :value="team"
+      @click="showDetails"
+    />
+  </div>
 </template>
 
 <script>
@@ -21,4 +23,7 @@ export default {
 </script>
 
 <style>
+img {
+  width: 75px;
+}
 </style>
