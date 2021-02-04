@@ -1,8 +1,13 @@
 <template>
   <div id="app">
     <p>Welcome To Your NBA Stat Tracker</p>
+    <div class="roster-container">
+      <team-roster :roster="playerStats"></team-roster>
+    </div>
     <team-logos :allTeams="allTeams"></team-logos>
-    <team-details :team="selectedTeam"></team-details>
+    <div v-if="selectedTeam">
+      <team-details :team="selectedTeam"></team-details>
+    </div>
   </div>
 </template>
 
@@ -11,12 +16,13 @@ import { eventBus } from "@/main.js";
 import config from "@/config.js";
 import TeamLogos from "@/components/TeamLogos.vue";
 import TeamDetails from "@/components/TeamDetails.vue";
+import TeamRoster from "@/components/TeamRoster.vue";
 
 export default {
   data() {
     return {
       allTeams: [],
-      selectedTeam: {},
+      selectedTeam: null,
       playerStats: {},
     };
   },
@@ -44,9 +50,15 @@ export default {
   components: {
     "team-logos": TeamLogos,
     "team-details": TeamDetails,
+    "team-roster": TeamRoster,
   },
 };
 </script>
 
 <style lang="css" scoped>
+.roster-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 </style>

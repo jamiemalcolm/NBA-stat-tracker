@@ -1,9 +1,15 @@
 <template>
-  <div v-if="team">
+  <div class="team-details">
     <p>{{ team.City }}, {{ team.Name }}</p>
     <p>Conference: {{ team.Conference }}</p>
     <p>Division: {{ team.Division }}</p>
-    <button class="getPlayers" @click="getPlayers">Get Players</button>
+    <button
+      class="getPlayers"
+      @click="getPlayers"
+      v-scroll-to="{ element: '.roster-container', easing: 'linear' }"
+    >
+      Get Players
+    </button>
   </div>
 </template>
 
@@ -22,4 +28,7 @@ export default {
 </script>
 
 <style>
+li {
+  list-style-type: none;
+}
 </style>
